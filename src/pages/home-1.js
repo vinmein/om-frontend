@@ -12,10 +12,11 @@ import Section7 from "../components/home-1/Section7";
 import Section8 from "../components/home-1/Section8";
 import Section9 from "../components/home-1/Section9";
 import AppLayout from "../components/layout/AppLayout";
+import UnsecuredLayout from '../layouts/UnsecuredLayout';
 
 const IndexPage = () => {
   return (
-    <main>
+    <UnsecuredLayout>
       <Section1 />
       <Section2 />
       <Section3 />
@@ -29,7 +30,7 @@ const IndexPage = () => {
       <Section10 />
       <Section11 />
       <Section12 />
-    </main>
+    </UnsecuredLayout>
   );
 };
 

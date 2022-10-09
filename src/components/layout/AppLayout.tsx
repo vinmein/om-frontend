@@ -24,7 +24,7 @@ const AppLayout: React.FC<Props> = ({
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
 
-    <Topbar />
+    {/* <Topbar /> */}
 
     <Sticky fixedOn={0}>
       <Header />

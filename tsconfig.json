@@ -25,6 +25,9 @@
       "@component/*": [
         "components/*"
       ],
+      "@customComponents/*": [
+        "customComponents/*"
+      ],
       "@data/*": [
         "data/*"
       ],
@@ -49,6 +52,7 @@
   "include": [
     "**/*.ts",
     "**/*.tsx",
-    "next.config.js"
-, "src/components/sessions/Signup.js", "src/pages/signup.js", "src/pages/login.js", "src/components/sessions/Login.js", "src/pages/_app.js", "src/pages/profile/edit.js", "src/pages/profile/index.js"  ]
+    "next.config.js",
+    "**/*.js",
+  ]
 }

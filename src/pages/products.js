@@ -16,27 +16,17 @@ import UnsecuredLayout from '../layouts/UnsecuredLayout';
 
 const Home4 = () => {
   return (
-    <UnsecuredLayout>
     <Fragment>
-      <Navbar />
+      {/* <Navbar /> */}
       <Container my="2rem">
-        <Section1 />
-        <Box mb="3.75rem">
-          <Section2 />
-        </Box>
+        
         <Section3 />
-        <Section4 />
-        <Section5 />
-        <Section6 />
         <Section7 />
-        <Section8 />
-        <Section9 />
       </Container>
     </Fragment>
-    </UnsecuredLayout>
   );
 };
 
-Home4.layout = AppLayout;
+Home4.layout = UnsecuredLayout;
 
 export default Home4;

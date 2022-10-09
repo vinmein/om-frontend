@@ -2,7 +2,7 @@ import IconButton from "@component/buttons/IconButton";
 import Image from "@component/Image";
 import { useAppContext } from "@context/app/AppContext";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Box from "../Box";
 import Categories from "../categories/Categories";
 import Container from "../Container";
@@ -15,6 +15,13 @@ import Sidenav from "../sidenav/Sidenav";
 import { Tiny } from "../Typography";
 import StyledHeader from "./HeaderStyle";
 import UserLoginDialog from "./UserLoginDialog";
+import { UserContext } from '../../contexts/user/Usercontext';
+import Avatar from "@component/avatar/Avatar";
+import Card from "@component/Card";
+import Grid from "@component/grid/Grid";
+import { StyledSessionCard } from "@component/sessions/SessionStyle";
+
+import Typography, { H3, H5, Small } from "@component/Typography";
 
 type HeaderProps = {
   isFixed?: boolean;
@@ -23,9 +30,12 @@ type HeaderProps = {
 
 const Header: React.FC<HeaderProps> = ({ isFixed, className }) => {
   const [open, setOpen] = useState(false);
+  const [isToggle, setToggle] = useState(false);
   const toggleSidenav = () => setOpen(!open);
   const { state } = useAppContext();
   const { cartList } = state.cart;
+  const { user, checkAuth } = useContext(UserContext);
+  console.log(user)
 
   const cartHandle = (
     <FlexBox ml="20px" alignItems="flex-start">
@@ -67,7 +77,7 @@ const Header: React.FC<HeaderProps> = ({ isFixed, className }) => {
             </a>
           </Link>
 
-          {isFixed && (
+          {/* {isFixed && (
             <div className="category-holder">
               <Categories>
                 <FlexBox color="text.hint" alignItems="center" ml="1rem">
@@ -76,15 +86,15 @@ const Header: React.FC<HeaderProps> = ({ isFixed, className }) => {
                 </FlexBox>
               </Categories>
             </div>
-          )}
+          )} */}
         </FlexBox>
 
-        <FlexBox justifyContent="center" flex="1 1 0">
+        {/* <FlexBox justifyContent="center" flex="1 1 0">
           <SearchBox />
-        </FlexBox>
+        </FlexBox> */}
 
         <FlexBox className="header-right" alignItems="center">
-          <UserLoginDialog
+          {!user? <UserLoginDialog
             handle={
               <IconButton ml="1rem" bg="gray.200" p="8px">
                 <Icon size="28px">user</Icon>
@@ -93,9 +103,49 @@ const Header: React.FC<HeaderProps> = ({ isFixed, className }) => {
           >
             <Box>
               <Login />
-            </Box>
+            </Box> 
           </UserLoginDialog>
+          : <>
+            <IconButton ml="1rem" bg="gray.200" p="8px" onClick={()=>{
+              setToggle(!isToggle);
+            }}>
+                <Icon size="28px">user</Icon>
+              </IconButton>
+            <Box style={{marginTop: "180px;", position: "absolute", right: "20%", display: isToggle? "block": "none"}}>
+              <StyledSessionCard mx="auto" my="2rem" boxShadow="large">
+                <FlexBox as={Card} p="14px 32px">
+                  <Avatar src="/assets/images/faces/ralph.png" size={64} />
+                  <Box ml="12px" flex="1 1 0">
+                    <FlexBox
+                      flexWrap="wrap"
+                      justifyContent="space-between"
+                      alignItems="center"
+                    >
+                      <div>
+                        <H5 my="0px">Ralph Edwards</H5>
+                        <FlexBox alignItems="center">
+                          <Typography fontSize="14px" color="text.hint">
+                            Balance:
+                          </Typography>
+                          <Typography ml="4px" fontSize="14px" color="primary.main">
+                            $500
+                          </Typography>
+                        </FlexBox>
+                      </div>
 
+                      <Typography
+                        ontSize="14px"
+                        color="text.hint"
+                        letterSpacing="0.2em"
+                      >
+                        Logout
+                      </Typography>
+                    </FlexBox>
+                  </Box>
+                </FlexBox>
+              </StyledSessionCard>
+            </Box> 
+            </>}
           <Sidenav
             handle={cartHandle}
             position="right"

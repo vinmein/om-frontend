@@ -50,12 +50,9 @@ const App = ({ Component, pageProps }) => {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
-    
         {/* thumbnail And title for social media */}
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Om HEB " />
-       
-    
       </Head>
       <GlobalStyles />
       <AppProvider>

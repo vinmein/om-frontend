@@ -13,21 +13,21 @@ import NavLink from "../nav-link/NavLink";
 import Typography, { Span } from "../Typography";
 import StyledNavbar from "./NavbarStyle";
 
-export interface NavbarProps {
-  navListOpen?: boolean;
-}
+// export interface NavbarProps {
+//   navListOpen?: boolean;
+// }
 
-interface Nav {
-  title: string;
-  url: string;
-  badge: string;
-  child: Nav[];
-  extLink?: boolean;
-}
+// interface Nav {
+//   title: string;
+//   url: string;
+//   badge: string;
+//   child: Nav[];
+//   extLink?: boolean;
+// }
 
-const Navbar: React.FC<NavbarProps> = ({ navListOpen }) => {
-  const renderNestedNav = (list: any[], isRoot = false) => {
-    return list?.map((nav: Nav) => {
+const Navbar = ({ navListOpen }) => {
+  const renderNestedNav = (list = [], isRoot = false) => {
+    return list?.map((nav) => {
       if (isRoot) {
         if (nav.url && nav.extLink)
           return (
@@ -143,7 +143,7 @@ const Navbar: React.FC<NavbarProps> = ({ navListOpen }) => {
         alignItems="center"
         height="100%"
       >
-        <Categories open={navListOpen}>
+        {/* <Categories open={navListOpen}>
           <Button width="278px" height="40px" bg="body.default" variant="text">
             <Icon>categories</Icon>
             <Typography
@@ -159,7 +159,7 @@ const Navbar: React.FC<NavbarProps> = ({ navListOpen }) => {
               chevron-right
             </Icon>
           </Button>
-        </Categories>
+        </Categories> */}
 
         <FlexBox>{renderNestedNav(navbarNavigations, true)}</FlexBox>
       </Container>
