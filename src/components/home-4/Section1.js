@@ -8,17 +8,39 @@ import { useRouter } from "next/router";
 
 
 
-const Section1 = () => {
+const Section1 = (props) => {
   const router = useRouter();
 
-  function gotoRoute(){
+  function gotoRoute(code){
     console.log("goto")
-    router.push("/products");
+    router.push(`/product/${code}`);
   }
+
+  function loadGrid(){
+    console.log(props.templeList)
+    // return (<></>)
+    return props.templeList.map((value, i)=>{
+      if(i%2==0){
+        return  (
+        <Grid item md={4} xs={12} onClick={(e)=>{
+                            gotoRoute(value.detail.templeCode);
+            }} >
+          <FashionCard1 value={value} />
+        </Grid>)
+      }
+      return   (<Grid item md={4} xs={12} onClick={(e)=>{
+        gotoRoute(value.detail.templeCode);
+        }}>
+      <FashionCard2 value={value} />
+    </Grid>)
+    })
+  }
+
   return (
     <Box mb="1.5rem">
       <Grid container spacing={6}>
-        <Grid item md={4} xs={12} onClick={(e)=>{
+        {loadGrid()}
+        {/* <Grid item md={4} xs={12} onClick={(e)=>{
                             gotoRoute('REJECT');
                           }} >
           <FashionCard1 />
@@ -28,7 +50,7 @@ const Section1 = () => {
         </Grid>
         <Grid item md={4} xs={12}>
           <FashionCard3 />
-        </Grid>
+        </Grid> */}
       </Grid>
     </Box>
   );

@@ -111,7 +111,7 @@ const Header: React.FC<HeaderProps> = ({ isFixed, className }) => {
             }}>
                 <Icon size="28px">user</Icon>
               </IconButton>
-            <Box style={{marginTop: "180px;", position: "absolute", right: "20%", display: isToggle? "block": "none"}}>
+            <Box style={{marginTop: "180px", position: "absolute", right: "20%", display: isToggle? "block": "none"}}>
               <StyledSessionCard mx="auto" my="2rem" boxShadow="large">
                 <FlexBox as={Card} p="14px 32px">
                   <Avatar src="/assets/images/faces/ralph.png" size={64} />

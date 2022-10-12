@@ -18,7 +18,7 @@ type MiniCartProps = {
 const MiniCart: React.FC<MiniCartProps> = ({ toggleSidenav }) => {
   const { state, dispatch } = useAppContext();
   const { cartList } = state.cart;
-
+  console.log(cartList)
   const handleCartAmountChange = useCallback(
     (amount, product) => () => {
       dispatch({

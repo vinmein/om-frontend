@@ -5,35 +5,35 @@ import NextImage from "next/image";
 import Link from "next/link";
 import React from "react";
 
-export interface FashionCard1Props {}
 
-const FashionCard1: React.FC<FashionCard1Props> = () => {
+
+const FashionCard1 = (props) => {
+  const { value } = props
   return (
     <Link href="/">
       <a>
         <Card
-          p="2.5rem"
+
           boxShadow="border"
           height="100%"
           borderRadius={4}
           hoverEffect
         >
-          <Box mb="3.5rem">
-            <Typography color="text.muted" mb="0.5rem">
-              SPECIAL OFFER
-            </Typography>
+          <Box p="2.5rem">
+            {/* <Typography color="text.muted" mb="0.5rem">
+              {value.detail.templeCode}
+            </Typography> */}
 
             <H3 mb="0.5rem" fontSize="30px" lineHeight="1.3">
-              <Span color="primary.main" fontSize="30px">
-                Comfortable
-              </Span>{" "}
-              Original Cotton Sneaker
+              <Span color="primary.main" fontSize="20px">
+                {value.detail.templeCode}
+              </Span><br />
+              {value.title}
             </H3>
 
-            <Typography color="text.muted" mb="1rem">
-              Handcrafted from genuine Italian leather. One inner compartment
-              with black satin lining
-            </Typography>
+            {/* <Typography color="text.muted" mb="1rem">
+            <p dangerouslySetInnerHTML={{ __html: value.body_html }}></p>
+            </Typography> */}
 
             <Small
               fontWeight="700"
@@ -48,9 +48,9 @@ const FashionCard1: React.FC<FashionCard1Props> = () => {
             width={30}
             height={20}
             layout="responsive"
-            objectFit="contain"
-            src="/assets/images/products/shoes-1.png"
-            alt="shoes"
+            objectFit="fit"
+            src={value.image.src}
+            alt={value.title}
           />
         </Card>
       </a>

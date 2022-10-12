@@ -5,43 +5,41 @@ import Box from "../Box";
 import Card from "../Card";
 import Typography, { H3, Small, Span } from "../Typography";
 
-export interface FashionCard2Props {}
-
-const FashionCard2: React.FC<FashionCard2Props> = () => {
+const FashionCard2 = (props) => {
+  const { value } = props
   return (
     <Link href="/">
       <a>
         <Card
-          p="2.5rem"
           boxShadow="border"
           height="100%"
           borderRadius={4}
           hoverEffect
         >
-          <NextImage
+         <NextImage
             width={30}
             height={20}
             layout="responsive"
-            objectFit="contain"
-            src="/assets/images/products/jacket.png"
-            alt="shoes"
+            objectFit="fit"
+            src={value.image.src}
+            alt={value.title}
           />
 
-          <Box mt="3.5rem">
-            <Typography color="text.muted" mb="0.5rem">
+          <Box p="2.5rem">
+            {/* <Typography color="text.muted" mb="0.5rem">
               WOMEN'S HANDBAG
-            </Typography>
+            </Typography> */}
 
             <H3 mb="0.5rem" fontSize="30px" lineHeight="1.3">
-              <Span color="primary.main" fontSize="30px">
-                Minimalist
-              </Span>{" "}
-              Genuine Cotton Jacket
+              <Span color="primary.main" fontSize="20px">
+                {value.detail.templeCode}
+              </Span><br />
+              {value.title}
             </H3>
-            <Typography color="text.muted" mb="1rem">
+            {/* <Typography color="text.muted" mb="1rem">
               Handcrafted from genuine Italian leather. One inner compartment
               with black satin lining
-            </Typography>
+            </Typography> */}
 
             <Small
               fontWeight="700"

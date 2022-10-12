@@ -38,9 +38,15 @@ export const METHOD_TYPES = {
 
 export const PATHS = {
   USER: {
-    GET: "/api/users",
+    GET: "api/users",
     CREATE: "api/v1/cognito/register",
     AUTH: "api/v1/cognito/login",
+  },
+  TEMPLE: {
+    GET_ALL: "api/v1/shopify/store/temples",
+  },
+  PRODUCTS: {
+    GET_BY_ID: "api/v1/shopify/store/temples/products",
   },
 };
 
