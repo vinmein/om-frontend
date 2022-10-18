@@ -56,7 +56,7 @@ const DevoteeInfo= () => {
   });
 
   return (
-    <StyledSessionCard mx="auto" my="1rem" boxShadow="large">
+    <StyledSessionCard mx="auto" my="1rem"  boxShadow="large">
       <form className="content" onSubmit={handleSubmit}>
         <H3 textAlign="center" mb="1.5rem">
           Add Devotees
