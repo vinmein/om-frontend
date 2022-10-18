@@ -46,122 +46,21 @@ const CheckoutForm = () => {
         setFieldValue,
       }) => (
         <form onSubmit={handleSubmit}>
-          <Card1 mb="2rem">
-            <Typography fontWeight="600" mb="1rem">
-              Shipping Address
-            </Typography>
-
-            <Grid container spacing={7}>
-              <Grid item sm={6} xs={12}>
-                <TextField
-                  name="shipping_name"
-                  label="Full Name"
-                  fullwidth
-                  mb="1rem"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  value={values.shipping_name || ""}
-                  errorText={touched.shipping_name && errors.shipping_name}
-                />
-                <TextField
-                  name="shipping_contact"
-                  label="Phone Number"
-                  fullwidth
-                  mb="1rem"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  value={values.shipping_contact || ""}
-                  errorText={
-                    touched.shipping_contact && errors.shipping_contact
-                  }
-                />
-                <TextField
-                  name="shipping_zip"
-                  label="Zip Code"
-                  type="number"
-                  fullwidth
-                  mb="1rem"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  value={values.shipping_zip || ""}
-                  errorText={touched.shipping_zip && errors.shipping_zip}
-                />
-                <TextField
-                  name="shipping_address1"
-                  label="Address 1"
-                  fullwidth
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  value={values.shipping_address1 || ""}
-                  errorText={
-                    touched.shipping_address1 && errors.shipping_address1
-                  }
-                />
-              </Grid>
-              <Grid item sm={6} xs={12}>
-                <TextField
-                  name="shipping_email"
-                  label="Email Address"
-                  type="email"
-                  fullwidth
-                  mb="1rem"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  value={values.shipping_email || ""}
-                  errorText={touched.shipping_email && errors.shipping_email}
-                />
-                <TextField
-                  name="shipping_company"
-                  label="Company"
-                  fullwidth
-                  mb="1rem"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  value={values.shipping_company || ""}
-                  errorText={
-                    touched.shipping_company && errors.shipping_company
-                  }
-                />
-                <Select
-                  mb="1rem"
-                  label="Country"
-                  options={countryList}
-                  value={values.shipping_country || "US"}
-                  onChange={(country) => {
-                    setFieldValue("shipping_country", country);
-                  }}
-                  errorText={
-                    touched.shipping_country && errors.shipping_country
-                  }
-                />
-                <TextField
-                  name="shipping_address2"
-                  label="Address 2"
-                  fullwidth
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  value={values.shipping_address2 || ""}
-                  errorText={
-                    touched.shipping_address2 && errors.shipping_address2
-                  }
-                />
-              </Grid>
-            </Grid>
-          </Card1>
+          
 
           <Card1 mb="2rem">
             <Typography fontWeight="600" mb="1rem">
               Billing Address
             </Typography>
 
-            <CheckBox
+            {/* <CheckBox
               label="Same as shipping address"
               color="secondary"
               mb={sameAsShipping ? "" : "1rem"}
               onChange={handleCheckboxChange(values, setFieldValue)}
-            />
+            /> */}
 
-            {!sameAsShipping && (
+       
               <Grid container spacing={7}>
                 <Grid item sm={6} xs={12}>
                   <TextField
@@ -254,7 +153,7 @@ const CheckoutForm = () => {
                   />
                 </Grid>
               </Grid>
-            )}
+  
           </Card1>
 
           <Grid container spacing={7}>

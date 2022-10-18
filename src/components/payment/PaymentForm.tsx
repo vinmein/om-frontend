@@ -33,7 +33,7 @@ const PaymentForm = () => {
   return (
     <Fragment>
       <Card1 mb="2rem">
-        <Radio
+        {/* <Radio
           name="credit-card"
           mb="1.5rem"
           color="secondary"
@@ -44,11 +44,11 @@ const PaymentForm = () => {
             </Typography>
           }
           onChange={handlePaymentMethodChange}
-        />
+        /> */}
 
-        <Divider mb="1.25rem" mx="-2rem" />
+        {/* <Divider mb="1.25rem" mx="-2rem" /> */}
 
-        {paymentMethod === "credit-card" && (
+        {/* {paymentMethod === "credit-card" && (
           <Formik
             initialValues={initialValues}
             validationSchema={checkoutSchema}
@@ -121,7 +121,7 @@ const PaymentForm = () => {
               </form>
             )}
           </Formik>
-        )}
+        )} */}
 
         <Radio
           name="paypal"
@@ -130,14 +130,14 @@ const PaymentForm = () => {
           checked={paymentMethod === "paypal"}
           label={
             <Typography ml="6px" fontWeight="600" fontSize="18px">
-              Pay with Paypal
+              PayNow
             </Typography>
           }
           onChange={handlePaymentMethodChange}
         />
         <Divider mb="1.5rem" mx="-2rem" />
 
-        {paymentMethod === "paypal" && (
+        {/* {paymentMethod === "paypal" && (
           <Fragment>
             <FlexBox alignItems="flex-end" mb="30px">
               <TextField
@@ -154,7 +154,7 @@ const PaymentForm = () => {
 
             <Divider mb="1.5rem" mx="-2rem" />
           </Fragment>
-        )}
+        )} */}
 
         <Radio
           name="cod"
@@ -162,7 +162,7 @@ const PaymentForm = () => {
           checked={paymentMethod === "cod"}
           label={
             <Typography ml="6px" fontWeight="600" fontSize="18px">
-              Cash On Delivery
+              eNets
             </Typography>
           }
           onChange={handlePaymentMethodChange}
@@ -171,7 +171,7 @@ const PaymentForm = () => {
 
       <Grid container spacing={7}>
         <Grid item sm={6} xs={12}>
-          <Link href="/checkout">
+          <Link href="/cart">
             <Button variant="outlined" color="primary" type="button" fullwidth>
               Back to checkout details
             </Button>
@@ -180,7 +180,7 @@ const PaymentForm = () => {
         <Grid item sm={6} xs={12}>
           <Link href="/orders">
             <Button variant="contained" color="primary" type="submit" fullwidth>
-              Review
+              Make a Payment
             </Button>
           </Link>
         </Grid>

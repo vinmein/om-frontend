@@ -1,7 +1,7 @@
 import Box from "@component/Box";
 import Grid from "@component/grid/Grid";
 import React, { useEffect, useState } from "react";
-import ProductCard from "@component/productGrid/productCard";
+import DeityCard from "@component/productGrid/deityCard";
 import { H2 } from "@component/Typography";
 import Hidden from "../hidden/Hidden";
 import FlexBox from "../FlexBox";
@@ -11,33 +11,45 @@ import StyledProductCategory from "./ProductCategoryStyle";
 const brandList = ["mapple", "kell", "siaomi", "kasus", "sunny", "aver"];
 const shopList = ["hexman killer", "onoti", "shahil", "steelcase"];
 import NextImage from "next/image";
+import { BASE_URL } from '../../../config/constant';
 
 
 const Archanai = (props) => {
   const [type, setType] = useState("brands");
-  const [selected, setSelected] = useState("");
+  const [selected, setSelected] = useState(null);
+  const [deties, setDeities] = useState(null);
   const [list, setList] = useState([]);
+  const { archanai } = props;
+  const keyBy = _.keyBy(archanai, 'productId');
+  const url = BASE_URL() + 'resources/';
 
   const handleCategoryClick = (brand) => {
-    if (selected.match(brand)) {
-      setSelected("");
-    } else setSelected(brand);
+    if (selected && selected.productId.match(brand)) {
+      setSelected(null);
+    } else {
+      setSelected(brand);
+      const archanai = keyBy[brand.productId];
+      if (archanai.deityList) {
+        setDeities(archanai.deityList)
+      }
+    }
   };
 
   useEffect(() => {
     if (type === "brands") setList(brandList);
     else setList(shopList);
-  }, [type]);
+  }, [type, selected, props]);
+
   return (
     <Box mb="3.75rem">
-      <H2 mb="1.5rem">Trending Items</H2>
+      <H2 mb="1.5rem">Buy Archanai Slip</H2>
 
       <Grid container spacing={6}>
         <Grid item md={4} xs={12}>
-        <Hidden down={768} mr="1.75rem">
-          <Box shadow={6} borderRadius={10} padding="1.25rem" bg="white">
-            <FlexBox mt="-0.5rem" mb="0.5rem">
-              <Typography
+          <Hidden down={768} mr="1.75rem">
+            <Box shadow={6} borderRadius={10} padding=".25rem" bg="white">
+              <FlexBox mt="-0.5rem" mb="0.5rem">
+                {/* <Typography
                 fontWeight="600"
                 fontSize="20px"
                 padding="0.5rem 1rem"
@@ -45,60 +57,32 @@ const Archanai = (props) => {
                 color={type === "brands" ? "gray.900" : "gray.600"}
                 onClick={() => setType("brands")}
               >
-                Brands
-              </Typography>
-              <Typography
-                fontWeight="600"
-                fontSize="20px"
-                paddingTop="0.5rem"
-                lineHeight="1.3"
-                color="gray.400"
-              >
-                |
-              </Typography>
-              <Typography
-                fontWeight="600"
-                fontSize="20px"
-                padding="0.5rem 1rem"
-                color={type === "shops" ? "gray.900" : "gray.600"}
-                style={{ cursor: "pointer" }}
-                onClick={() => setType("shops")}
-              >
-                Shops
-              </Typography>
-            </FlexBox>
+                Archanai
+              </Typography> */}
 
-            {list.map((brand, ind) => (
-              <StyledProductCategory
-                key={brand}
-                mb="0.75rem"
-                bg={selected.match(brand) ? "white" : "gray.100"}
-                shadow={selected.match(brand) ? 4 : null}
-                onClick={() => handleCategoryClick(brand)}
-              >
-                <NextImage
-                  height={20}
-                  width={20}
-                  objectFit="contain"
-                  alt={brand}
-                  src={`/assets/images/logos/${ind % 2 === 0 ? "v" : "u"}.png`}
-                />
-                <span className="product-category-title">{brand}</span>
-              </StyledProductCategory>
-            ))}
+              </FlexBox>
 
-            <StyledProductCategory
-              mt="4rem"
-              bg={selected.match(`all-${type}`) ? "white" : "gray.100"}
-              shadow={selected.match(`all-${type}`) ? 4 : null}
-              onClick={() => handleCategoryClick(`all-${type}`)}
-            >
-              <span className="product-category-title show-all">
-                View All {type}
-              </span>
-            </StyledProductCategory>
-          </Box>
-        </Hidden>
+              {archanai.map((data, ind) => (
+                <StyledProductCategory
+                  key={data.productId}
+                  mb="0.75rem"
+                  bg={selected && selected.productId.match(data.productId) ? "gray.100" : "white"}
+                  onClick={() => handleCategoryClick(data)}
+                >
+                  <NextImage
+                    height={50}
+                    width={50}
+                    objectFit="contain"
+                    alt={data.title}
+                    src={data.image}
+                  />
+                  <span className="product-category-title">{data.title}</span>
+                </StyledProductCategory>
+              ))}
+
+
+            </Box>
+          </Hidden>
           {/* <ProductCard1
             id="3425442"
             title="KSUS ROG Strix G15"
@@ -108,19 +92,23 @@ const Archanai = (props) => {
           /> */}
         </Grid>
         <Grid item md={8} xs={12}>
-          <Grid container spacing={6}>
-            {productDatabase.slice(169, 175).map((item, ind) => (
-              <Grid item lg={3} sm={4} xs={6} key={item.title}>
-                <ProductCard
-                  id={item.id}
-                  title={item.title}
-                  price={item.price}
-                  imgUrl={item.imgUrl}
-                  off={ind * 10}
-                />
-              </Grid>
-            ))}
-          </Grid>
+          {deties ? <Grid container spacing={6}>
+            {deties.map((item, ind) => {
+              const image = `${url}${item.imageUrl}`
+              return (
+                <Grid item lg={3} sm={4} xs={6} key={item.title}>
+                  <DeityCard
+                    id={item.deityId}
+                    title={item.deityName}
+                    price={selected.price}
+                    imgUrl={image}
+                    off={ind * 0}
+                  />
+                </Grid>
+              )
+            }
+            )}
+          </Grid> : <></>}
         </Grid>
       </Grid>
     </Box>

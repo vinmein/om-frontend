@@ -46,7 +46,7 @@ export const PATHS = {
     GET_ALL: "api/v1/shopify/store/temples",
   },
   PRODUCTS: {
-    GET_BY_ID: "api/v1/shopify/store/temples/products",
+    GET_BY_ID: "api/v1/products",
   },
 };
 

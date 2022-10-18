@@ -49,7 +49,7 @@ const ProductCard7: React.FC<ProductCard7Props & SpaceProps> = ({
       <Image
         src={imgUrl || "/assets/images/products/iphone-xi.png"}
         size={140}
-        display="block"
+        display="fit"
         alt={name}
       />
       <FlexBox

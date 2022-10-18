@@ -2,7 +2,7 @@ import React from "react";
 import CheckoutForm from "../components/checkout/CheckoutForm";
 import CheckoutSummary from "../components/checkout/CheckoutSummary";
 import Grid from "../components/grid/Grid";
-import CheckoutNavLayout from "../components/layout/CheckoutNavLayout";
+import CheckoutNavLayout from "../layouts/CheckoutNavLayout";
 
 const Checkout = () => {
   return (

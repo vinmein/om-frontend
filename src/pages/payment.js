@@ -1,6 +1,6 @@
 import React from "react";
 import Grid from "../components/grid/Grid";
-import CheckoutNavLayout from "../components/layout/CheckoutNavLayout";
+import CheckoutNavLayout from "../layouts/CheckoutNavLayout";
 import PaymentForm from "../components/payment/PaymentForm";
 import PaymentSummary from "../components/payment/PaymentSummary";
 

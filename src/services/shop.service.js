@@ -6,6 +6,6 @@ export function getTemples() {
 }
 
 export function getProducts(alias) {
-  const url = PATHS.PRODUCTS.GET_BY_ID+`/${alias}`
+  const url = PATHS.PRODUCTS.GET_BY_ID+`?tags=${alias}`
   return helpers.callApi(METHOD_TYPES.GET, url, {}, {});
 }

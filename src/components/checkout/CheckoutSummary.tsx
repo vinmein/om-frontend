@@ -60,10 +60,10 @@ const CheckoutSummary: React.FC = () => {
         $2610.00
       </Typography>
 
-      <TextField placeholder="Voucher" fullwidth />
+      {/* <TextField placeholder="Voucher" fullwidth />
       <Button variant="outlined" color="primary" mt="1rem" mb="30px" fullwidth>
         Apply Voucher
-      </Button>
+      </Button> */}
     </Card1>
   );
 };

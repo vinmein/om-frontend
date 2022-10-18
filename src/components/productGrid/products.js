@@ -27,11 +27,11 @@ const Products = (props) => {
             {products.map((item, ind) => (
               <Grid item lg={3} sm={4} xs={6} key={item.title}>
                 <ProductCard
-                  id={item.id}
+                  id={item.productId}
                   title={item.title}
                   price={item.price}
-                  imgUrl={item.image.src}
-                  off={ind * 10}
+                  imgUrl={item.image}
+                  off={ind * 0}
                 />
               </Grid>
             ))}

@@ -8,7 +8,8 @@ import { Card1 } from "../components/Card1";
 import Divider from "../components/Divider";
 import FlexBox from "../components/FlexBox";
 import Grid from "../components/grid/Grid";
-import CheckoutNavLayout from "../components/layout/CheckoutNavLayout";
+// import CheckoutNavLayout from "../components/layout/CheckoutNavLayout";
+import CheckoutNavLayout from "../layouts/CheckoutNavLayout";
 import ProductCard7 from "../components/product-cards/ProductCard7";
 import Select from "../components/Select";
 import TextField from "../components/text-field/TextField";
@@ -18,7 +19,7 @@ import countryList from "../data/countryList";
 
 const Cart = () => {
   const { state } = useAppContext();
-  const cartList: CartItem[] = state.cart.cartList;
+  const cartList= state.cart.cartList;
 
   const getTotalPrice = () => {
     return (
@@ -55,7 +56,7 @@ const Cart = () => {
               </FlexBox>
             </FlexBox>
 
-            <Divider mb="1rem" />
+            {/* <Divider mb="1rem" />
 
             <FlexBox alignItems="center" mb="1rem">
               <Typography fontWeight="600" mr="10px">
@@ -68,11 +69,11 @@ const Cart = () => {
               </Box>
             </FlexBox>
 
-            <TextArea rows={6} fullwidth mb="1rem" />
+            <TextArea rows={6} fullwidth mb="1rem" /> */}
 
-            <Divider mb="1rem" />
+            {/* <Divider mb="1rem" /> */}
 
-            <TextField placeholder="Voucher" fullwidth />
+            {/* <TextField placeholder="Voucher" fullwidth />
 
             <Button
               variant="outlined"
@@ -82,41 +83,10 @@ const Cart = () => {
               fullwidth
             >
               Apply Voucher
-            </Button>
+            </Button> */}
 
             <Divider mb="1.5rem" />
-
-            <Typography fontWeight="600" mb="1rem">
-              Shipping Estimates
-            </Typography>
-
-            <Select
-              mb="1rem"
-              label="Country"
-              placeholder="Select Country"
-              options={countryList}
-              onChange={(e) => {
-                console.log(e);
-              }}
-            />
-
-            <Select
-              label="State"
-              placeholder="Select State"
-              options={stateList}
-              onChange={(e) => {
-                console.log(e);
-              }}
-            />
-
-            <Box mt="1rem">
-              <TextField label="Zip Code" placeholder="3100" fullwidth />
-            </Box>
-
-            <Button variant="outlined" color="primary" my="1rem" fullwidth>
-              Calculate Shipping
-            </Button>
-            <Link href="/checkout">
+            <Link href="/payment">
               <Button variant="contained" color="primary" fullwidth>
                 Checkout Now
               </Button>

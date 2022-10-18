@@ -22,13 +22,13 @@ const Section1 = (props) => {
     return props.templeList.map((value, i)=>{
       if(i%2==0){
         return  (
-        <Grid item md={4} xs={12} onClick={(e)=>{
+        <Grid item md={6} xs={12} onClick={(e)=>{
                             gotoRoute(value.detail.templeCode);
             }} >
           <FashionCard1 value={value} />
         </Grid>)
       }
-      return   (<Grid item md={4} xs={12} onClick={(e)=>{
+      return   (<Grid item md={6} xs={12} onClick={(e)=>{
         gotoRoute(value.detail.templeCode);
         }}>
       <FashionCard2 value={value} />
